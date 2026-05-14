@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Enpal Solar Analytics - Live Data - Germany</title>
-<meta name="description" content="Interactive Enpal solar ROI and system sizing calculator for Germany with live energy context data.">
+<title>Energy1 Solar Analytics - Live Data - Germany</title>
+<meta name="description" content="Interactive Energy1 solar ROI and system sizing calculator for Germany with live energy context data.">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&family=Syne:wght@700;800&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -198,7 +198,7 @@ canvas{display:block}
 
 <header class="hdr">
   <div class="hdr-brand">
-    <div class="logo">en<span>pal</span></div>
+    <div class="logo">Energy<span>1</span></div>
     <div class="hdiv"></div>
     <div class="hdr-sub">Growth Analytics - Deutschland - Live Data</div>
   </div>
@@ -325,10 +325,10 @@ canvas{display:block}
   </div>
 
   <div class="sec one">
-    <div class="sec-hdr"><span class="sec-ttl">Enpal.One+ Bundle</span><span class="sbadge" id="bundle-badge">Solar only</span></div>
+    <div class="sec-hdr"><span class="sec-ttl">Energy1 Bundle</span><span class="sbadge" id="bundle-badge">Solar only</span></div>
     <div class="sec-body">
       <div class="bc-grid">
-        <div class="bc active locked"><div class="bc-icon">PV</div><div class="bc-name">Solar PV</div><div class="bc-desc">PV system + smart meter + Enpal.One+ AI platform</div><div class="bc-cost">Always included</div></div>
+        <div class="bc active locked"><div class="bc-icon">PV</div><div class="bc-name">Solar PV</div><div class="bc-desc">PV system + smart meter + Energy1 AI platform</div><div class="bc-cost">Always included</div></div>
         <div class="bc" id="bc-bat" onclick="toggleBundle('bat')"><div class="bc-icon">BAT</div><div class="bc-name">Battery Storage</div><div class="bc-desc">10 kWh home battery. Self-use +28%. Degrades 2%/yr (modelled)</div><div class="bc-cost">+ EUR7,500</div></div>
         <div class="bc" id="bc-ev" onclick="toggleBundle('ev')"><div class="bc-icon">EV</div><div class="bc-name">EV Wallbox</div><div class="bc-desc">11 kW smart wallbox, solar-optimised charging, V2H ready</div><div class="bc-cost">+ EUR1,800</div></div>
       </div>
@@ -480,7 +480,7 @@ canvas{display:block}
   <div class="insight">
     <div class="ins-icon">AI</div>
     <div>
-      <div class="ins-label">Enpal Growth Analytics - Summary</div>
+      <div class="ins-label">Energy1 Growth Analytics - Summary</div>
       <div class="ins-text" id="insight">Configure the system above to generate a full analytics summary.</div>
     </div>
   </div>
@@ -488,7 +488,7 @@ canvas{display:block}
 </div>
 
 <div class="footer">
-  Enpal Solar Analytics Dashboard - Germany - EEG 2023 - Full physics model with degradation, maintenance, seasonality, and financing.<br>
+  Energy1 Solar Analytics Dashboard - Germany - EEG 2023 - Full physics model with degradation, maintenance, seasonality, and financing.<br>
   CO2 factor: 401 g/kWh (Umweltbundesamt 2023) -
   Live data: <a href="https://co2.earth" target="_blank">co2.earth</a> -
   <a href="https://open-meteo.com" target="_blank">Open-Meteo</a> -
@@ -704,7 +704,7 @@ function buildLiveInsight(){
   const cards = [];
   if(liveData.co2 && liveData.co2>420){
     cards.push({type:'live-card',icon:'CO2',label:'CO2 Context - Why Solar Urgency Is High',
-      text:`Atmospheric CO2 is <strong>${liveData.co2.toFixed(1)} ppm</strong> - well above the 350 ppm safe threshold, rising ~2.5 ppm/year. Each Enpal 8 kWp system offsets roughly <strong>10 tonnes of CO2 over 25 years</strong>.`});
+      text:`Atmospheric CO2 is <strong>${liveData.co2.toFixed(1)} ppm</strong> - well above the 350 ppm safe threshold, rising ~2.5 ppm/year. Each Energy1 8 kWp system offsets roughly <strong>10 tonnes of CO2 over 25 years</strong>.`});
   }
   if(liveData.irr){
     const quality=liveData.irr.peak>400?'excellent':liveData.irr.peak>200?'moderate':'low';
@@ -842,7 +842,7 @@ function buildIntelligence(b,p){
     txt:`Your <strong>${p.sys} kWp</strong> is well-matched to <strong>${p.con} kWh/month</strong> demand.`});
   const arb=(p.rate*100-p.fit).toFixed(1);
   cards.push({t:'action',i:'ROI',l:'Self-Consumption Arbitrage',
-    txt:`Grid costs <strong>${(p.rate*100).toFixed(1)} ct/kWh</strong> but EEG pays only <strong>${p.fit} ct/kWh</strong> - a gap of <strong>${arb} ct/kWh</strong>. Shift flexible loads to solar hours using Enpal.One+ to maximise this gap.`});
+    txt:`Grid costs <strong>${(p.rate*100).toFixed(1)} ct/kWh</strong> but EEG pays only <strong>${p.fit} ct/kWh</strong> - a gap of <strong>${arb} ct/kWh</strong>. Shift flexible loads to solar hours using Energy1 to maximise this gap.`});
   if(b.pb){
     if(b.pb<8)cards.push({t:'good',i:'TOP',l:'Excellent Payback',
       txt:`Payback in <strong>${b.pb.toFixed(1)} years</strong> is exceptional (German average: 9-12 years). The remaining <strong>${(25-b.pb).toFixed(0)} profit years</strong> generate pure return.`});
@@ -869,8 +869,8 @@ function buildSegment(b,p){
   let seg,title,desc,recs;
   if(b.np>25000&&b.pb&&b.pb<9&&(hasBat||p.con>400)){
     seg='premium';title='Premium Bundle Customer';
-    desc=`NPV ${eur(b.np)} over 25 years - ${b.pb.toFixed(1)}-year payback - Full Enpal ecosystem fit.`;
-    recs=['Lead with Solar + Battery + Wallbox full bundle','Highlight Enpal.One+ AI energy trading optimisation','Offer Enpal Flex premium financing','Expected CLV: Very High - cross-sell Waermepumpe Year 2'];
+    desc=`NPV ${eur(b.np)} over 25 years - ${b.pb.toFixed(1)}-year payback - Full Energy1 ecosystem fit.`;
+    recs=['Lead with Solar + Battery + Wallbox full bundle','Highlight Energy1 AI energy trading optimisation','Offer Energy1 premium financing','Expected CLV: Very High - cross-sell Waermepumpe Year 2'];
   } else if(b.pb&&b.pb<12&&b.np>8000){
     seg='standard';title='Standard Solar Customer';
     desc=`Solid economics: ${eur(b.np)} net profit - ${b.pb.toFixed(1)}-year payback.`;
